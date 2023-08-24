@@ -1,3 +1,6 @@
+import { Card, Col, Button } from "antd";
+// import "../test/App.css";
+
 function FoodBox(props) {
   const { id, name, calories, image, servings } = props.food;
 
@@ -9,26 +12,32 @@ function FoodBox(props) {
     props.setAllFoods(allNotDeletedFood);
   };
   return (
-    <div key={id}>
-      <p>{name}</p>
-
-      <img src={image} width="150px" />
-
-      <p>Calories: {calories}</p>
-      <p>Servings {servings}</p>
-
-      <p>
-        <b>Total Calories:{servings * calories} </b> kcal
-      </p>
-
-      <button
-        onClick={() => {
-          handleDelete(id);
-        }}
+    <Col className="FoodBoxCol" key={id}>
+      <Card
+        style={{ width: 300, height: 400, margin: "auto", textAlign: "left" }}
       >
-        Delete
-      </button>
-    </div>
+        <h2>{name}</h2>
+        <hr />
+        <img src={image} width="150px" />
+
+        <p>Calories: {calories}</p>
+        <p>Servings {servings}</p>
+
+        <p>
+          <b>Total Calories:{servings * calories} </b> kcal
+        </p>
+
+        <Button
+          type="primary"
+          onClick={() => {
+            handleDelete(id);
+          }}
+        >
+          Delete
+        </Button>
+        <br />
+      </Card>
+    </Col>
   );
 }
 
